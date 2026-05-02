@@ -1,0 +1,62 @@
+{
+  "rules": [
+    {
+      "id": "auth-001",
+      "name": "Multiple failed login indicators",
+      "type": "keyword",
+      "severity": "high",
+      "description": "Detecta mensajes asociados con fallos de autenticacion.",
+      "config": {
+        "field": "message",
+        "keywords": ["failed login", "invalid password", "authentication failed"],
+        "ignore_case": true
+      }
+    },
+    {
+      "id": "http-001",
+      "name": "Suspicious HTTP status",
+      "type": "threshold",
+      "severity": "medium",
+      "description": "Marca respuestas HTTP de error que podrian indicar exploracion.",
+      "config": {
+        "field": "http.status_code",
+        "operator": ">=",
+        "threshold": 500
+      }
+    },
+    {
+      "id": "web-001",
+      "name": "SQL injection pattern",
+      "type": "regex",
+      "severity": "critical",
+      "description": "Detecta patrones comunes de SQL injection en la URL.",
+      "config": {
+        "field": "url.path",
+        "pattern": "(union\\s+select|or\\s+1=1|drop\\s+table)",
+        "ignore_case": true
+      }
+    },
+    {
+      "id": "net-001",
+      "name": "Watchlisted network range",
+      "type": "cidr",
+      "severity": "high",
+      "description": "Detecta trafico originado desde rangos CIDR observados.",
+      "config": {
+        "field": "source.ip",
+        "cidrs": ["203.0.113.0/24", "198.51.100.0/24"]
+      }
+    },
+    {
+      "id": "endpoint-001",
+      "name": "Suspicious process",
+      "type": "field_equals",
+      "severity": "medium",
+      "description": "Detecta procesos comunmente usados en abuso post-explotacion.",
+      "config": {
+        "field": "process.name",
+        "values": ["powershell.exe", "rundll32.exe", "certutil.exe"]
+      }
+    }
+  ]
+}
