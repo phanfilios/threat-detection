@@ -1,0 +1,13 @@
+rules:
+  - id: auth-001
+    name: Multiple failed login indicators
+    type: keyword
+    severity: high
+    description: Detecta mensajes asociados con fallos de autenticacion.
+    config:
+      field: message
+      keywords:
+        - failed login
+        - invalid password
+        - authentication failed
+      ignore_case: true
