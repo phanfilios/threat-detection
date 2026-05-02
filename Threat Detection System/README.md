@@ -9,6 +9,7 @@ Sistema modular para detectar amenazas en eventos JSONL usando reglas declarativ
 - Soporte para campos anidados con notacion tipo `source.ip` o `http.status_code`.
 - Estrategia secuencial o paralela con `ThreadPoolExecutor`.
 - Alertas priorizadas por severidad: `low`, `medium`, `high`, `critical`.
+- Correlacion temporal para detectar patrones entre eventos.
 - Reportes `HTML` minimalistas o `JSON` para integracion.
 
 ## Instalacion
@@ -46,6 +47,18 @@ Filtrar alertas desde severidad alta:
 ```powershell
 python -m src.main --min-severity high
 ```
+
+Usar correlacion temporal:
+
+```powershell
+python -m src.main --correlation-window 10 --failed-login-threshold 3
+```
+
+Patrones de correlacion incluidos:
+
+- Posible fuerza bruta por multiples fallos de autenticacion desde la misma IP y usuario.
+- Login exitoso despues de fallos recientes.
+- Evento de alto riesgo seguido por proceso sospechoso desde la misma fuente.
 
 ## Formato de regla
 

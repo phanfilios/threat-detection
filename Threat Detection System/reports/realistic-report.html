@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Threat Detection Report</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --text: #17202a;
+      --muted: #667085;
+      --line: #e5e7eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.5;
+    }
+    main { max-width: 1120px; margin: 0 auto; padding: 32px 20px; }
+    header { display: flex; justify-content: space-between; gap: 20px; align-items: end; margin-bottom: 24px; }
+    h1 { margin: 0; font-size: 28px; letter-spacing: 0; }
+    .muted { color: var(--muted); margin: 4px 0 0; }
+    .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+    .metric, table { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+    .metric { padding: 16px; }
+    .metric span { display: block; color: var(--muted); font-size: 13px; }
+    .metric strong { display: block; margin-top: 6px; font-size: 24px; }
+    table { width: 100%; border-collapse: collapse; overflow: hidden; }
+    th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+    tr:last-child td { border-bottom: 0; }
+    .sev { display: inline-block; min-width: 72px; border-radius: 999px; padding: 3px 8px; text-align: center; font-size: 12px; font-weight: 700; }
+    .critical { background: #fee2e2; color: #991b1b; }
+    .high { background: #ffedd5; color: #9a3412; }
+    .medium { background: #fef3c7; color: #92400e; }
+    .low { background: #dbeafe; color: #1e40af; }
+    @media (max-width: 760px) {
+      header { display: block; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Threat Detection Report</h1>
+      <p class="muted">Generado: 2026-05-02T21:57:48+00:00</p>
+    </div>
+    <p class="muted">5 reglas cargadas</p>
+  </header>
+  <section class="grid">
+    <div class="metric"><span>Eventos</span><strong>7</strong></div>
+    <div class="metric"><span>Alertas</span><strong>14</strong></div>
+    <div class="metric"><span>Criticas/Altas</span><strong>12</strong></div>
+    <div class="metric"><span>Reglas</span><strong>5</strong></div>
+  </section>
+  <table>
+    <thead><tr><th>Evento</th><th>Severidad</th><th>Fuente</th><th>Regla</th><th>Nombre</th><th>Descripcion</th></tr></thead>
+    <tbody><tr><td>evt-001</td><td><span class='sev high'>HIGH</span></td><td>rule</td><td>auth-001</td><td>Multiple failed login indicators</td><td>Detecta mensajes asociados con fallos de autenticacion.</td></tr><tr><td>evt-001</td><td><span class='sev high'>HIGH</span></td><td>rule</td><td>net-001</td><td>Watchlisted network range</td><td>Detecta trafico originado desde rangos CIDR observados.</td></tr><tr><td>evt-002</td><td><span class='sev high'>HIGH</span></td><td>rule</td><td>auth-001</td><td>Multiple failed login indicators</td><td>Detecta mensajes asociados con fallos de autenticacion.</td></tr><tr><td>evt-002</td><td><span class='sev high'>HIGH</span></td><td>rule</td><td>net-001</td><td>Watchlisted network range</td><td>Detecta trafico originado desde rangos CIDR observados.</td></tr><tr><td>evt-003</td><td><span class='sev high'>HIGH</span></td><td>rule</td><td>auth-001</td><td>Multiple failed login indicators</td><td>Detecta mensajes asociados con fallos de autenticacion.</td></tr><tr><td>evt-003</td><td><span class='sev high'>HIGH</span></td><td>rule</td><td>net-001</td><td>Watchlisted network range</td><td>Detecta trafico originado desde rangos CIDR observados.</td></tr><tr><td>evt-003</td><td><span class='sev high'>HIGH</span></td><td>correlation</td><td>corr-bruteforce</td><td>Possible brute force activity</td><td>Multiples fallos de autenticacion en una ventana corta.</td></tr><tr><td>evt-004</td><td><span class='sev high'>HIGH</span></td><td>rule</td><td>net-001</td><td>Watchlisted network range</td><td>Detecta trafico originado desde rangos CIDR observados.</td></tr><tr><td>evt-004</td><td><span class='sev critical'>CRITICAL</span></td><td>correlation</td><td>corr-login-after-failures</td><td>Successful login after failures</td><td>Un acceso exitoso ocurrio despues de varios fallos recientes.</td></tr><tr><td>evt-005</td><td><span class='sev critical'>CRITICAL</span></td><td>rule</td><td>web-001</td><td>SQL injection pattern</td><td>Detecta patrones comunes de SQL injection en la URL.</td></tr><tr><td>evt-006</td><td><span class='sev high'>HIGH</span></td><td>rule</td><td>net-001</td><td>Watchlisted network range</td><td>Detecta trafico originado desde rangos CIDR observados.</td></tr><tr><td>evt-006</td><td><span class='sev medium'>MEDIUM</span></td><td>rule</td><td>http-001</td><td>Suspicious HTTP status</td><td>Marca respuestas HTTP de error que podrian indicar exploracion.</td></tr><tr><td>evt-006</td><td><span class='sev medium'>MEDIUM</span></td><td>rule</td><td>endpoint-001</td><td>Suspicious process</td><td>Detecta procesos comunmente usados en abuso post-explotacion.</td></tr><tr><td>evt-006</td><td><span class='sev critical'>CRITICAL</span></td><td>correlation</td><td>corr-high-risk-process-chain</td><td>High-risk event followed by suspicious process</td><td>Se observo una cadena de actividad riesgosa desde la misma fuente.</td></tr></tbody>
+  </table>
+</main>
+</body>
+</html>

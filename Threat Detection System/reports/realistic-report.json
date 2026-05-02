@@ -1,0 +1,820 @@
+{
+  "generated_at": "2026-05-02T21:57:41+00:00",
+  "summary": {
+    "rules_loaded": 5,
+    "events_processed": 7,
+    "alerts_total": 14,
+    "high_priority_alerts": 12
+  },
+  "alerts": [
+    {
+      "alert_id": "evt-001:auth-001",
+      "event_id": "evt-001",
+      "rule_id": "auth-001",
+      "name": "Multiple failed login indicators",
+      "description": "Detecta mensajes asociados con fallos de autenticacion.",
+      "severity": "high",
+      "metadata": {
+        "field": "message",
+        "keywords_matched": [
+          "failed login"
+        ]
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "rule"
+    },
+    {
+      "alert_id": "evt-001:net-001",
+      "event_id": "evt-001",
+      "rule_id": "net-001",
+      "name": "Watchlisted network range",
+      "description": "Detecta trafico originado desde rangos CIDR observados.",
+      "severity": "high",
+      "metadata": {
+        "field": "source.ip",
+        "ip": "203.0.113.45",
+        "cidrs_matched": [
+          "203.0.113.0/24"
+        ]
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "rule"
+    },
+    {
+      "alert_id": "evt-002:auth-001",
+      "event_id": "evt-002",
+      "rule_id": "auth-001",
+      "name": "Multiple failed login indicators",
+      "description": "Detecta mensajes asociados con fallos de autenticacion.",
+      "severity": "high",
+      "metadata": {
+        "field": "message",
+        "keywords_matched": [
+          "invalid password"
+        ]
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "rule"
+    },
+    {
+      "alert_id": "evt-002:net-001",
+      "event_id": "evt-002",
+      "rule_id": "net-001",
+      "name": "Watchlisted network range",
+      "description": "Detecta trafico originado desde rangos CIDR observados.",
+      "severity": "high",
+      "metadata": {
+        "field": "source.ip",
+        "ip": "203.0.113.45",
+        "cidrs_matched": [
+          "203.0.113.0/24"
+        ]
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "rule"
+    },
+    {
+      "alert_id": "evt-003:auth-001",
+      "event_id": "evt-003",
+      "rule_id": "auth-001",
+      "name": "Multiple failed login indicators",
+      "description": "Detecta mensajes asociados con fallos de autenticacion.",
+      "severity": "high",
+      "metadata": {
+        "field": "message",
+        "keywords_matched": [
+          "authentication failed"
+        ]
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "rule"
+    },
+    {
+      "alert_id": "evt-003:net-001",
+      "event_id": "evt-003",
+      "rule_id": "net-001",
+      "name": "Watchlisted network range",
+      "description": "Detecta trafico originado desde rangos CIDR observados.",
+      "severity": "high",
+      "metadata": {
+        "field": "source.ip",
+        "ip": "203.0.113.45",
+        "cidrs_matched": [
+          "203.0.113.0/24"
+        ]
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "rule"
+    },
+    {
+      "alert_id": "evt-003:corr-bruteforce",
+      "event_id": "evt-003",
+      "rule_id": "corr-bruteforce",
+      "name": "Possible brute force activity",
+      "description": "Multiples fallos de autenticacion en una ventana corta.",
+      "severity": "high",
+      "metadata": {
+        "source_ip": "203.0.113.45",
+        "username": "admin",
+        "failures": 3,
+        "window_minutes": 10,
+        "related_events": [
+          "evt-001",
+          "evt-002",
+          "evt-003"
+        ]
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "correlation"
+    },
+    {
+      "alert_id": "evt-004:net-001",
+      "event_id": "evt-004",
+      "rule_id": "net-001",
+      "name": "Watchlisted network range",
+      "description": "Detecta trafico originado desde rangos CIDR observados.",
+      "severity": "high",
+      "metadata": {
+        "field": "source.ip",
+        "ip": "203.0.113.45",
+        "cidrs_matched": [
+          "203.0.113.0/24"
+        ]
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "rule"
+    },
+    {
+      "alert_id": "evt-004:corr-login-after-failures",
+      "event_id": "evt-004",
+      "rule_id": "corr-login-after-failures",
+      "name": "Successful login after failures",
+      "description": "Un acceso exitoso ocurrio despues de varios fallos recientes.",
+      "severity": "critical",
+      "metadata": {
+        "source_ip": "203.0.113.45",
+        "username": "admin",
+        "previous_failures": 3,
+        "related_events": [
+          "evt-001",
+          "evt-002",
+          "evt-003"
+        ]
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "correlation"
+    },
+    {
+      "alert_id": "evt-005:web-001",
+      "event_id": "evt-005",
+      "rule_id": "web-001",
+      "name": "SQL injection pattern",
+      "description": "Detecta patrones comunes de SQL injection en la URL.",
+      "severity": "critical",
+      "metadata": {
+        "field": "url.path",
+        "match": "UNION SELECT"
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "rule"
+    },
+    {
+      "alert_id": "evt-006:net-001",
+      "event_id": "evt-006",
+      "rule_id": "net-001",
+      "name": "Watchlisted network range",
+      "description": "Detecta trafico originado desde rangos CIDR observados.",
+      "severity": "high",
+      "metadata": {
+        "field": "source.ip",
+        "ip": "198.51.100.17",
+        "cidrs_matched": [
+          "198.51.100.0/24"
+        ]
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "rule"
+    },
+    {
+      "alert_id": "evt-006:http-001",
+      "event_id": "evt-006",
+      "rule_id": "http-001",
+      "name": "Suspicious HTTP status",
+      "description": "Marca respuestas HTTP de error que podrian indicar exploracion.",
+      "severity": "medium",
+      "metadata": {
+        "field": "http.status_code",
+        "value": 503,
+        "operator": ">=",
+        "threshold": 500
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "rule"
+    },
+    {
+      "alert_id": "evt-006:endpoint-001",
+      "event_id": "evt-006",
+      "rule_id": "endpoint-001",
+      "name": "Suspicious process",
+      "description": "Detecta procesos comunmente usados en abuso post-explotacion.",
+      "severity": "medium",
+      "metadata": {
+        "field": "process.name",
+        "value": "powershell.exe"
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "rule"
+    },
+    {
+      "alert_id": "evt-006:corr-high-risk-process-chain",
+      "event_id": "evt-006",
+      "rule_id": "corr-high-risk-process-chain",
+      "name": "High-risk event followed by suspicious process",
+      "description": "Se observo una cadena de actividad riesgosa desde la misma fuente.",
+      "severity": "critical",
+      "metadata": {
+        "source_ip": "198.51.100.17",
+        "process": "powershell.exe",
+        "previous_high_risk_events": [
+          {
+            "id": "evt-006",
+            "timestamp": "2026-05-02T16:05:00-05:00",
+            "rule_id": "net-001",
+            "name": "Watchlisted network range"
+          }
+        ]
+      },
+      "created_at": "2026-05-02T21:57:41+00:00",
+      "source": "correlation"
+    }
+  ],
+  "events": [
+    {
+      "event": {
+        "id": "evt-001",
+        "timestamp": "2026-05-02T16:00:00-05:00",
+        "event_type": "authentication",
+        "event": {
+          "outcome": "failure"
+        },
+        "user": {
+          "name": "admin"
+        },
+        "message": "Failed login for admin from remote host",
+        "source": {
+          "ip": "203.0.113.45"
+        },
+        "http": {
+          "status_code": 401
+        },
+        "url": {
+          "path": "/login"
+        },
+        "process": {
+          "name": "ssh"
+        }
+      },
+      "results": [
+        {
+          "rule_id": "auth-001",
+          "name": "Multiple failed login indicators",
+          "description": "Detecta mensajes asociados con fallos de autenticacion.",
+          "severity": "high",
+          "matched": true,
+          "metadata": {
+            "field": "message",
+            "keywords_matched": [
+              "failed login"
+            ]
+          },
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "http-001",
+          "name": "Suspicious HTTP status",
+          "description": "Marca respuestas HTTP de error que podrian indicar exploracion.",
+          "severity": "medium",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "web-001",
+          "name": "SQL injection pattern",
+          "description": "Detecta patrones comunes de SQL injection en la URL.",
+          "severity": "critical",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "net-001",
+          "name": "Watchlisted network range",
+          "description": "Detecta trafico originado desde rangos CIDR observados.",
+          "severity": "high",
+          "matched": true,
+          "metadata": {
+            "field": "source.ip",
+            "ip": "203.0.113.45",
+            "cidrs_matched": [
+              "203.0.113.0/24"
+            ]
+          },
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "endpoint-001",
+          "name": "Suspicious process",
+          "description": "Detecta procesos comunmente usados en abuso post-explotacion.",
+          "severity": "medium",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        }
+      ]
+    },
+    {
+      "event": {
+        "id": "evt-002",
+        "timestamp": "2026-05-02T16:01:20-05:00",
+        "event_type": "authentication",
+        "event": {
+          "outcome": "failure"
+        },
+        "user": {
+          "name": "admin"
+        },
+        "message": "Invalid password for admin",
+        "source": {
+          "ip": "203.0.113.45"
+        },
+        "http": {
+          "status_code": 401
+        },
+        "url": {
+          "path": "/login"
+        },
+        "process": {
+          "name": "ssh"
+        }
+      },
+      "results": [
+        {
+          "rule_id": "auth-001",
+          "name": "Multiple failed login indicators",
+          "description": "Detecta mensajes asociados con fallos de autenticacion.",
+          "severity": "high",
+          "matched": true,
+          "metadata": {
+            "field": "message",
+            "keywords_matched": [
+              "invalid password"
+            ]
+          },
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "http-001",
+          "name": "Suspicious HTTP status",
+          "description": "Marca respuestas HTTP de error que podrian indicar exploracion.",
+          "severity": "medium",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "web-001",
+          "name": "SQL injection pattern",
+          "description": "Detecta patrones comunes de SQL injection en la URL.",
+          "severity": "critical",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "net-001",
+          "name": "Watchlisted network range",
+          "description": "Detecta trafico originado desde rangos CIDR observados.",
+          "severity": "high",
+          "matched": true,
+          "metadata": {
+            "field": "source.ip",
+            "ip": "203.0.113.45",
+            "cidrs_matched": [
+              "203.0.113.0/24"
+            ]
+          },
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "endpoint-001",
+          "name": "Suspicious process",
+          "description": "Detecta procesos comunmente usados en abuso post-explotacion.",
+          "severity": "medium",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        }
+      ]
+    },
+    {
+      "event": {
+        "id": "evt-003",
+        "timestamp": "2026-05-02T16:02:30-05:00",
+        "event_type": "authentication",
+        "event": {
+          "outcome": "failure"
+        },
+        "user": {
+          "name": "admin"
+        },
+        "message": "Authentication failed for admin",
+        "source": {
+          "ip": "203.0.113.45"
+        },
+        "http": {
+          "status_code": 401
+        },
+        "url": {
+          "path": "/login"
+        },
+        "process": {
+          "name": "ssh"
+        }
+      },
+      "results": [
+        {
+          "rule_id": "auth-001",
+          "name": "Multiple failed login indicators",
+          "description": "Detecta mensajes asociados con fallos de autenticacion.",
+          "severity": "high",
+          "matched": true,
+          "metadata": {
+            "field": "message",
+            "keywords_matched": [
+              "authentication failed"
+            ]
+          },
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "http-001",
+          "name": "Suspicious HTTP status",
+          "description": "Marca respuestas HTTP de error que podrian indicar exploracion.",
+          "severity": "medium",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "web-001",
+          "name": "SQL injection pattern",
+          "description": "Detecta patrones comunes de SQL injection en la URL.",
+          "severity": "critical",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "net-001",
+          "name": "Watchlisted network range",
+          "description": "Detecta trafico originado desde rangos CIDR observados.",
+          "severity": "high",
+          "matched": true,
+          "metadata": {
+            "field": "source.ip",
+            "ip": "203.0.113.45",
+            "cidrs_matched": [
+              "203.0.113.0/24"
+            ]
+          },
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "endpoint-001",
+          "name": "Suspicious process",
+          "description": "Detecta procesos comunmente usados en abuso post-explotacion.",
+          "severity": "medium",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        }
+      ]
+    },
+    {
+      "event": {
+        "id": "evt-004",
+        "timestamp": "2026-05-02T16:03:05-05:00",
+        "event_type": "authentication",
+        "event": {
+          "outcome": "success"
+        },
+        "user": {
+          "name": "admin"
+        },
+        "message": "Successful login for admin",
+        "source": {
+          "ip": "203.0.113.45"
+        },
+        "http": {
+          "status_code": 200
+        },
+        "url": {
+          "path": "/dashboard"
+        },
+        "process": {
+          "name": "ssh"
+        }
+      },
+      "results": [
+        {
+          "rule_id": "auth-001",
+          "name": "Multiple failed login indicators",
+          "description": "Detecta mensajes asociados con fallos de autenticacion.",
+          "severity": "high",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "http-001",
+          "name": "Suspicious HTTP status",
+          "description": "Marca respuestas HTTP de error que podrian indicar exploracion.",
+          "severity": "medium",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "web-001",
+          "name": "SQL injection pattern",
+          "description": "Detecta patrones comunes de SQL injection en la URL.",
+          "severity": "critical",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "net-001",
+          "name": "Watchlisted network range",
+          "description": "Detecta trafico originado desde rangos CIDR observados.",
+          "severity": "high",
+          "matched": true,
+          "metadata": {
+            "field": "source.ip",
+            "ip": "203.0.113.45",
+            "cidrs_matched": [
+              "203.0.113.0/24"
+            ]
+          },
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "endpoint-001",
+          "name": "Suspicious process",
+          "description": "Detecta procesos comunmente usados en abuso post-explotacion.",
+          "severity": "medium",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        }
+      ]
+    },
+    {
+      "event": {
+        "id": "evt-005",
+        "timestamp": "2026-05-02T16:04:40-05:00",
+        "event_type": "web",
+        "event": {
+          "outcome": "unknown"
+        },
+        "user": {
+          "name": "guest"
+        },
+        "message": "GET /products?id=1 UNION SELECT password FROM users",
+        "source": {
+          "ip": "10.0.0.8"
+        },
+        "http": {
+          "status_code": 200
+        },
+        "url": {
+          "path": "/products?id=1 UNION SELECT password FROM users"
+        },
+        "process": {
+          "name": "nginx"
+        }
+      },
+      "results": [
+        {
+          "rule_id": "auth-001",
+          "name": "Multiple failed login indicators",
+          "description": "Detecta mensajes asociados con fallos de autenticacion.",
+          "severity": "high",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "http-001",
+          "name": "Suspicious HTTP status",
+          "description": "Marca respuestas HTTP de error que podrian indicar exploracion.",
+          "severity": "medium",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "web-001",
+          "name": "SQL injection pattern",
+          "description": "Detecta patrones comunes de SQL injection en la URL.",
+          "severity": "critical",
+          "matched": true,
+          "metadata": {
+            "field": "url.path",
+            "match": "UNION SELECT"
+          },
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "net-001",
+          "name": "Watchlisted network range",
+          "description": "Detecta trafico originado desde rangos CIDR observados.",
+          "severity": "high",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "endpoint-001",
+          "name": "Suspicious process",
+          "description": "Detecta procesos comunmente usados en abuso post-explotacion.",
+          "severity": "medium",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        }
+      ]
+    },
+    {
+      "event": {
+        "id": "evt-006",
+        "timestamp": "2026-05-02T16:05:00-05:00",
+        "event_type": "endpoint",
+        "event": {
+          "outcome": "success"
+        },
+        "user": {
+          "name": "service"
+        },
+        "message": "Service error while processing request",
+        "source": {
+          "ip": "198.51.100.17"
+        },
+        "http": {
+          "status_code": 503
+        },
+        "url": {
+          "path": "/api/orders"
+        },
+        "process": {
+          "name": "powershell.exe"
+        }
+      },
+      "results": [
+        {
+          "rule_id": "auth-001",
+          "name": "Multiple failed login indicators",
+          "description": "Detecta mensajes asociados con fallos de autenticacion.",
+          "severity": "high",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "http-001",
+          "name": "Suspicious HTTP status",
+          "description": "Marca respuestas HTTP de error que podrian indicar exploracion.",
+          "severity": "medium",
+          "matched": true,
+          "metadata": {
+            "field": "http.status_code",
+            "value": 503,
+            "operator": ">=",
+            "threshold": 500
+          },
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "web-001",
+          "name": "SQL injection pattern",
+          "description": "Detecta patrones comunes de SQL injection en la URL.",
+          "severity": "critical",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "net-001",
+          "name": "Watchlisted network range",
+          "description": "Detecta trafico originado desde rangos CIDR observados.",
+          "severity": "high",
+          "matched": true,
+          "metadata": {
+            "field": "source.ip",
+            "ip": "198.51.100.17",
+            "cidrs_matched": [
+              "198.51.100.0/24"
+            ]
+          },
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "endpoint-001",
+          "name": "Suspicious process",
+          "description": "Detecta procesos comunmente usados en abuso post-explotacion.",
+          "severity": "medium",
+          "matched": true,
+          "metadata": {
+            "field": "process.name",
+            "value": "powershell.exe"
+          },
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        }
+      ]
+    },
+    {
+      "event": {
+        "id": "evt-007",
+        "timestamp": "2026-05-02T16:06:00-05:00",
+        "event_type": "healthcheck",
+        "event": {
+          "outcome": "success"
+        },
+        "user": {
+          "name": "system"
+        },
+        "message": "Regular health check",
+        "source": {
+          "ip": "10.0.0.25"
+        },
+        "http": {
+          "status_code": 200
+        },
+        "url": {
+          "path": "/health"
+        },
+        "process": {
+          "name": "app"
+        }
+      },
+      "results": [
+        {
+          "rule_id": "auth-001",
+          "name": "Multiple failed login indicators",
+          "description": "Detecta mensajes asociados con fallos de autenticacion.",
+          "severity": "high",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "http-001",
+          "name": "Suspicious HTTP status",
+          "description": "Marca respuestas HTTP de error que podrian indicar exploracion.",
+          "severity": "medium",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "web-001",
+          "name": "SQL injection pattern",
+          "description": "Detecta patrones comunes de SQL injection en la URL.",
+          "severity": "critical",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "net-001",
+          "name": "Watchlisted network range",
+          "description": "Detecta trafico originado desde rangos CIDR observados.",
+          "severity": "high",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        },
+        {
+          "rule_id": "endpoint-001",
+          "name": "Suspicious process",
+          "description": "Detecta procesos comunmente usados en abuso post-explotacion.",
+          "severity": "medium",
+          "matched": false,
+          "metadata": {},
+          "evaluated_at": "2026-05-02T21:57:41+00:00"
+        }
+      ]
+    }
+  ]
+}

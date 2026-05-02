@@ -77,6 +77,7 @@ def main(argv: List[str] = None):
     except Exception as exc:
         LOGGER.exception("Error cargando eventos: %s", exc)
         return 3
+    events = sorted(events, key=lambda item: item.get("timestamp") or item.get("@timestamp") or "")
 
     LOGGER.info("Eventos cargados: %d", len(events))
 
