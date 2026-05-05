@@ -2,6 +2,13 @@
 
 Sistema modular para detectar amenazas en eventos JSONL usando reglas declarativas en JSON o YAML. El proyecto esta pensado como una base profesional, ligera y extensible: reglas separadas, estrategias de deteccion, alertas y reportes minimalistas.
 
+<img width="686" height="821" alt="image" src="https://github.com/user-attachments/assets/4ba89212-5568-4009-92eb-a9cd70b10754" />
+
+
+## COMANDO RAPIDO 
+
+python -m src.main --report-format json --output reports/realistic-report.json
+
 ## Caracteristicas
 
 - Carga de reglas desde `data/rules` en YAML o JSON.

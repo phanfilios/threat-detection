@@ -95,6 +95,7 @@ def write_html_report(path: str, payload: Dict[str, Any]) -> None:
             "<tr>"
             f"<td>{escape(str(alert.get('event_id', '')))}</td>"
             f"<td><span class='sev {escape(severity)}'>{escape(severity.upper())}</span></td>"
+            f"<td>{escape(str(alert.get('source', 'rule')))}</td>"
             f"<td>{escape(str(alert.get('rule_id', '')))}</td>"
             f"<td>{escape(str(alert.get('name', '')))}</td>"
             f"<td>{escape(str(alert.get('description', '')))}</td>"
@@ -165,8 +166,8 @@ def write_html_report(path: str, payload: Dict[str, Any]) -> None:
     <div class="metric"><span>Reglas</span><strong>{summary.get("rules_loaded", 0)}</strong></div>
   </section>
   <table>
-    <thead><tr><th>Evento</th><th>Severidad</th><th>Regla</th><th>Nombre</th><th>Descripcion</th></tr></thead>
-    <tbody>{''.join(rows) if rows else '<tr><td colspan="5">No se detectaron alertas.</td></tr>'}</tbody>
+    <thead><tr><th>Evento</th><th>Severidad</th><th>Fuente</th><th>Regla</th><th>Nombre</th><th>Descripcion</th></tr></thead>
+    <tbody>{''.join(rows) if rows else '<tr><td colspan="6">No se detectaron alertas.</td></tr>'}</tbody>
   </table>
 </main>
 </body>

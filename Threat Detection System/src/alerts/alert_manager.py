@@ -30,6 +30,7 @@ class AlertManager:
                     "severity": severity,
                     "metadata": result.get("metadata", {}),
                     "created_at": utc_now_iso(),
+                    "source": "rule",
                 }
             )
         return sorted(alerts, key=lambda item: severity_rank(item.get("severity")), reverse=True)
